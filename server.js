@@ -216,12 +216,17 @@ async function handleLeaderboard(res) {
       "application/json; charset=utf-8"
     );
   } catch (error) {
+  console.error("FULL ERROR:", error);
+  console.error("CAUSE:", error.cause);
+
   send(
     res,
     500,
     JSON.stringify({
       error: "Could not refresh the leaderboard.",
-      detail: error.message
+      detail: error.message,
+      cause: error.cause ? String(error.cause) : null,
+      stack: error.stack
     }),
     "application/json; charset=utf-8"
   );
