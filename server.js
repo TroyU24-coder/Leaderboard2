@@ -216,13 +216,16 @@ async function handleLeaderboard(res) {
       "application/json; charset=utf-8"
     );
   } catch (error) {
-    send(
-      res,
-      500,
-      JSON.stringify({ error: "Could not refresh the leaderboard.", detail: error.message }),
-      "application/json; charset=utf-8"
-    );
-  }
+  send(
+    res,
+    500,
+    JSON.stringify({
+      error: "Could not refresh the leaderboard.",
+      detail: error.message
+    }),
+    "application/json; charset=utf-8"
+  );
+}
 }
 
 http.createServer((req, res) => {
